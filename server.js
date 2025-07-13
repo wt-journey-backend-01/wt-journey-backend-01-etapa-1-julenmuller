@@ -16,7 +16,7 @@ app.get('/sugestao', (req, res) => {
   const { nome, ingredientes } = req.query;
 
   res.send(`
-    <h1>Obrigado pela sugestão, ${nome}!</h1>
+    <h1>Obrigado pela sugestão ${nome}!</h1>
     <p>Recebemos sua ideia de lanche com os ingredientes: <strong>${ingredientes}</strong></p>
     <a href="/">Voltar para a página inicial</a>
   `.trim());
@@ -38,14 +38,24 @@ app.get('/contato-recebido', (req, res) => {
 
   const { nome, email, assunto, mensagem } = ultimoContato;
 
-  res.send(`
-    <h1>Mensagem recebida!</h1>
-    <p><strong>Nome:</strong> ${nome}</p>
-    <p><strong>Email:</strong> ${email}</p>
-    <p><strong>Assunto:</strong> ${assunto}</p>
-    <p><strong>Mensagem:</strong> ${mensagem}</p>
-    <a href="/">Voltar à página inicial</a>
-  `.trim());
+  res.status(200).send(`
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+      <meta charset="UTF-8">
+      <title>Mensagem Recebida</title>
+      <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+      <h1>Mensagem recebida!</h1>
+      <p><strong>Nome:</strong> ${nome}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Assunto:</strong> ${assunto}</p>
+      <p><strong>Mensagem:</strong> ${mensagem}</p>
+      <a href="/">Voltar à página inicial</a>
+    </body>
+    </html>
+  `);
 
   ultimoContato = null;
 });
