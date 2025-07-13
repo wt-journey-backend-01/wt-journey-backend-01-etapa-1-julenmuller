@@ -1,64 +1,57 @@
 <sup>Esse é um feedback gerado por IA, ele pode conter erros.</sup>
 
-Você tem 9 créditos restantes para usar o sistema de feedback AI.
+Você tem 8 créditos restantes para usar o sistema de feedback AI.
 
 # Feedback para julenmuller:
 
 Nota final: **49.4/100**
 
-Olá, julenmuller! 🚀
+Olá, julenmuller! 🚀 Primeiramente, parabéns pelo seu esforço e dedicação nesse desafio! Receber uma nota de **49.4/100** é uma ótima base para construir e aprimorar seu conhecimento. Vamos juntos entender o que podemos melhorar? 💪
 
-Primeiramente, quero parabenizá-lo pelo esforço que você colocou neste desafio! A pontuação de **49.4/100** mostra que você está no caminho certo, mas há algumas áreas onde podemos melhorar juntos. Vamos lá? 😊
-
-### Vamos Celebrar as Conquistas! 🎉
-
-Infelizmente, não houve conquistas bônus nesta tarefa, mas isso não significa que você não fez um bom trabalho! O fato de você ter estruturado suas rotas e utilizado o Express.js é um grande passo. Continue assim, pois você está aprendendo algo muito valioso!
+### Celebrações 🎉
+Infelizmente, não houve conquistas bônus nesta tarefa, mas isso não diminui o seu esforço! Cada linha de código escrita é uma oportunidade de aprendizado. Continue assim! 
 
 ### Análise dos Requisitos que Precisam de Atenção 🔍
 
-Agora, vamos explorar os pontos que precisam de ajuste. Abaixo, vou abordar os requisitos que falharam, buscando a causa raiz de cada um deles:
+1. **Rota `/` e Formulários**: Um dos requisitos é que a rota `/` deve conter pelo menos um formulário. No seu código, percebi que a rota está implementada, mas não há um formulário na página `index.html`. É fundamental incluir um `<form>` para coletar as sugestões! Algo como:
+   ```html
+   <form action="/sugestao" method="GET">
+       <input type="text" name="nome" placeholder="Seu nome" required>
+       <input type="text" name="ingredientes" placeholder="Ingredientes" required>
+       <button type="submit">Enviar Sugestão</button>
+   </form>
+   ```
+   Isso vai atender aos requisitos de ter dois campos de texto e um botão de submit. 
 
-1. **Rota `/` - Formulário Necessário**:
-   - **Causa**: O requisito diz que a rota `/` deve conter um formulário. Entretanto, o seu código não possui um formulário nesta rota. Para corrigir, você pode adicionar um formulário HTML no arquivo `index.html`. Pense em incluir campos para `nome` e `ingredientes`, assim como um botão de envio.
-   - **Solução**: Crie um formulário como este:
-     ```html
-     <form action="/sugestao" method="GET">
-         <input type="text" name="nome" placeholder="Seu Nome" required />
-         <input type="text" name="ingredientes" placeholder="Ingredientes" required />
-         <button type="submit">Enviar Sugestão</button>
-     </form>
-     ```
+2. **Rota `/contato` (GET)**: Aqui, você já implementou a rota, mas precisamos garantir que a página `contato.html` contenha todos os campos necessários. Os requisitos mencionam que devem existir os campos `nome`, `email`, `assunto` e `mensagem`. Vamos adicionar campos como este:
+   ```html
+   <form action="/contato" method="POST">
+       <input type="text" name="nome" placeholder="Seu nome" required>
+       <input type="email" name="email" placeholder="Seu email" required>
+       <input type="text" name="assunto" placeholder="Assunto" required>
+       <textarea name="mensagem" placeholder="Sua mensagem" required></textarea>
+       <button type="submit">Enviar</button>
+   </form>
+   ```
+   Não se esqueça de incluir uma âncora que leve de volta à página inicial! 
 
-2. **Rota `/contato` - Campos de Input Faltando**:
-   - **Causa**: Vários campos de input estão ausentes na sua página de contato. Você criou a rota, mas ainda não adicionou o HTML necessário no arquivo `contato.html`.
-   - **Solução**: Adicione os seguintes campos ao seu formulário:
-     ```html
-     <form action="/contato" method="POST">
-         <input type="text" name="nome" placeholder="Seu Nome" required />
-         <input type="email" name="email" placeholder="Seu Email" required />
-         <input type="text" name="assunto" placeholder="Assunto" required />
-         <textarea name="mensagem" placeholder="Sua Mensagem" required></textarea>
-         <button type="submit">Enviar</button>
-     </form>
-     ```
+3. **Rota `/contato` (POST)**: A resposta da rota `/contato` precisa exibir o "assunto" enviado no formulário. Você já capturou os dados, então apenas adicione uma linha para mostrar o `assunto` na resposta:
+   ```javascript
+   <p><strong>Assunto:</strong> ${assunto}</p>
+   ```
 
-3. **Rota `/api/lanches` - Estrutura de Dados Faltando**:
-   - **Causa**: O seu código não está retornando um array de lanches, conforme solicitado. Você precisa garantir que o arquivo `lanches.json` contém um array de objetos com os atributos corretos (id, nome, ingredientes).
-   - **Solução**: Verifique o conteúdo de `lanches.json` e se ele está estruturado assim:
-     ```json
-     [
-         { "id": 1, "nome": "X-Burguer", "ingredientes": ["pão", "carne", "queijo"] },
-         { "id": 2, "nome": "X-Salada", "ingredientes": ["pão", "carne", "salada"] },
-         { "id": 3, "nome": "X-Tudo", "ingredientes": ["pão", "carne", "queijo", "salada", "maionese"] }
-     ]
-     ```
+4. **Rota `/api/lanches`**: Para essa rota, você precisa retornar um array de lanches. Verifique se o arquivo `lanches.json` possui pelo menos 3 lanches com os atributos corretos (id, nome, ingredientes). O retorno deve ser algo como:
+   ```json
+   [
+       { "id": 1, "nome": "Lanche 1", "ingredientes": ["pão", "carne", "queijo"] },
+       { "id": 2, "nome": "Lanche 2", "ingredientes": ["pão", "frango", "salada"] },
+       { "id": 3, "nome": "Lanche 3", "ingredientes": ["pão", "vegetais", "molho"] }
+   ]
+   ```
 
 ### Problemas que Geraram Descontos ⚠️
 
-Os pontos críticos foram a falta de atributos `name` corretos nos formulários. Um formulário bem estruturado é a chave para receber os dados corretamente. Vamos corrigir isso conforme as instruções acima!
+Os principais problemas foram em relação aos atributos `name` dos inputs nos formulários da `index.html` e `contato.html`. É crucial que cada campo tenha o atributo `name` correto para que os dados sejam enviados corretamente. Quando você implementa o formulário, lembre-se de que cada campo deve ter um `name` que corresponda ao que você espera no `req.body` ou `req.query`.
 
-### Conclusão 💡
-
-Julenmuller, você está se saindo muito bem, e cada um desses desafios é uma oportunidade de aprendizado. Não desanime com os erros, mas veja-os como passos para a melhoria. Estou aqui para te ajudar e juntos vamos fazer seu projeto brilhar! 🌟
-
-Continue praticando e explorando o mundo do Node.js e Express. Estou ansioso para ver seu progresso nas próximas etapas! Se precisar de ajuda, não hesite em perguntar. Você consegue! 💪✨
+### Considerações Finais 🌟
+Julenmuller, você está no caminho certo! Lembre-se de que cada erro é uma oportunidade para aprender e crescer. Continue praticando e revisando o que você aprendeu. As melhorias que você precisa fazer são bem específicas e com um pouco de atenção, você pode facilmente alcançar uma nota ainda melhor na próxima vez! Estou aqui para ajudar, então não hesite em perguntar se tiver dúvidas. Vamos continuar nessa jornada de aprendizado juntos! 💡🚀
