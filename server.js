@@ -7,7 +7,6 @@ const PORT = 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
@@ -15,8 +14,8 @@ app.get('/', (req, res) => {
 app.get('/sugestao', (req, res) => {
   const { nome, ingredientes } = req.query;
 
-  res.send(`
-    <h1>Obrigado pela sugestão ${nome}!</h1>
+  res.status(200).send(`
+    <h1>Obrigado pela sugestão, ${nome}!</h1>
     <p>Recebemos sua ideia de lanche com os ingredientes: <strong>${ingredientes}</strong></p>
     <a href="/">Voltar para a página inicial</a>
   `.trim());
@@ -58,6 +57,10 @@ app.get('/contato-recebido', (req, res) => {
   `);
 
   ultimoContato = null;
+});
+
+app.get('/cardapio', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'cardapio.html'));
 });
 
 app.get('/api/lanches', (req, res) => {

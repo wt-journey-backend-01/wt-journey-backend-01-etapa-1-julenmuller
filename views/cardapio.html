@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cardápio DevBurger</title>
+  <link rel="stylesheet" href="/public/css/cardapio.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Cardápio DevBurger</h1>
+    <div id="menu"></div>
+    <a href="/" class="btn-voltar">Voltar à página inicial</a>
+  </div>
+
+  <script>
+    fetch('/api/lanches')
+      .then(res => res.json())
+      .then(lanches => {
+        const menuDiv = document.getElementById('menu');
+        lanches.forEach(lanche => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <h2>${lanche.nome}</h2>
+            <p>${lanche.ingredientes}</p>
+          `;
+          menuDiv.appendChild(card);
+        });
+      });
+  </script>
+</body>
+</html>
