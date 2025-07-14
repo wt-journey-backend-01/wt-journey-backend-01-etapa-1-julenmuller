@@ -1,13 +1,16 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!-- <!DOCTYPE html>
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>Cardápio DevBurger</title>
-  <link rel="stylesheet" href="/public/css/cardapio.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cardápio DevBurguer</title>
+  <link rel="stylesheet" href="/css/cardapio.css">
 </head>
+
 <body>
   <div class="container">
-    <h1>Cardápio DevBurger</h1>
+    <h1>Cardápio DevBurguer</h1>
     <div id="menu"></div>
     <a href="/" class="btn-voltar">Voltar à página inicial</a>
   </div>
@@ -17,7 +20,7 @@
       .then(res => res.json())
       .then(lanches => {
         const menuDiv = document.getElementById('menu');
-        lanches.forEach(lanche => {
+        Lanches.forEach(lanche => {
           const card = document.createElement('div');
           card.className = 'card';
           card.innerHTML = `
@@ -29,4 +32,5 @@
       });
   </script>
 </body>
-</html>
+
+</html> -->

@@ -41,6 +41,13 @@ button:hover {
   background-color: #8b1a1a;
 }
 
+.logo {
+  width: 150px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
 a {
   display: inline-block;
   margin-top: 1rem;
